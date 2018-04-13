@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             android:id="@+id/show_dialog"
+                                             android:layout_width="wrap_content"
+                                             android:layout_height="wrap_content"
+    >
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/loadingdialog_bg_new_frame"
+        android:orientation="vertical"
+        android:padding="25dp"
+        >
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lav"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            />
+
+        <TextView
+            android:id="@+id/pro_show_zi"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="加载中..."
+            android:textColor="#777777"
+            android:textSize="13sp"
+            android:gravity="center_horizontal"
+            />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

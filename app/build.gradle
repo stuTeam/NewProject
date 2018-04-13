@@ -1,0 +1,83 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    defaultConfig {
+        applicationId "yytc.ssic.com.yytc"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    //多渠道打包
+    productFlavors {
+        flavorDimensions "computer_for_dev"
+        tf {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "tf"]
+        }
+        xiaomi {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "xiaomi"]
+        }
+
+        yingyongbao {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "yingyongbao"]
+        }
+
+        huawei {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "huawei"]
+        }
+
+        apk360 {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "apk360"]
+        }
+    }
+
+    sourceSets{
+        main{
+            res.srcDirs=[
+                    'src/main/res/layouts/activities',
+                    'src/main/res/layouts/windows',
+                    'src/main/res'
+            ]
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "com.android.support:appcompat-v7:$rootProject.appcompatv7Version"
+    compile "com.android.support:cardview-v7:$rootProject.appcompatv7Version"
+    compile "com.android.support:design:$rootProject.appcompatv7Version"
+    compile "com.android.support:recyclerview-v7:$rootProject.appcompatv7Version"
+    implementation "com.android.support.constraint:constraint-layout:$rootProject.constraintlayoutVersion"
+    testImplementation "junit:junit:$rootProject.junitVersion"
+    androidTestImplementation "com.android.support.test:runner:$rootProject.runnerVersion"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espressocoreVersion"
+    //小刀工具
+    compile "com.jakewharton:butterknife:$rootProject.butterknifeVersion"
+    //retrofit相关
+    compile "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
+    compile "com.squareup.retrofit2:converter-gson:$rootProject.convertergsonVersion"
+    compile "com.squareup.retrofit2:adapter-rxjava:$rootProject.adapterrxjavaVersion"
+    compile "io.reactivex:rxandroid:$rootProject.rxandroidVersion"
+    //okhttp3
+    compile "com.squareup.okhttp3:okhttp:$rootProject.okhttpVersion"
+    //日志拦截器
+    compile "com.squareup.okhttp3:logging-interceptor:$rootProject.logginginterceptorVersion"
+    //防止内存泄露，使订阅者生命周期一致
+    compile "com.trello:rxlifecycle:$rootProject.rxlifecycleVersion"
+    compile "com.trello:rxlifecycle-components:$rootProject.rxlifecyclecomponentsVersion"
+    //友盟统计sdk
+    compile "com.umeng.sdk:common:$rootProject.umengcommonVersion"
+    compile "com.umeng.sdk:analytics:$rootProject.umenganalyticsVersion"
+    //支持json动画加载控件
+    compile "com.airbnb.android:lottie:$rootProject.lottieVersion"
+}
